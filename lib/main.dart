@@ -6,8 +6,8 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
-      padding: const EdgeInsets.all(30),
+    Widget titleFirst = Container(
+      padding: const EdgeInsets.all(20),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -16,10 +16,8 @@ class MyApp extends StatelessWidget {
               children: <Widget>[
                 Container(
                   child: Text(
-                    '20대 남성 추천 도서',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    '책플릭스 추천 도서',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
               ],
@@ -29,43 +27,157 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    Widget slideBook = Container(
+    Widget titleSecond = Container(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    '책플릭스 인기 도서',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+    Widget titleThird = Container(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    '20대 남성 추천 도서',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+
+    Widget slideFirst = Container(
       height: 200,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Container(
-            width: 160.0,
-            color: Colors.red,
+          Image.asset(
+            'images/book1.jpeg',
+            width: 160,
           ),
-          Container(
-            width: 160.0,
-            color: Colors.blue,
+          Image.asset(
+            'images/book2.jpeg',
+            width: 160,
           ),
-          Container(
-            width: 160.0,
-            color: Colors.purple,
+          Image.asset(
+            'images/book3.jpeg',
+            width: 160,
           ),
-          Container(
-            width: 160.0,
-            color: Colors.green,
+          Image.asset(
+            'images/book4.jpeg',
+            width: 160,
+          ),
+        ],
+      ),
+    );
+
+    Widget slideSecond = Container(
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Image.asset(
+            'images/image5.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image6.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image7.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image8.jpeg',
+            width: 160,
+          ),
+        ],
+      ),
+    );
+
+    Widget slideThird = Container(
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Image.asset(
+            'images/image5.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image6.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image7.jpeg',
+            width: 160,
+          ),
+          Image.asset(
+            'images/image8.jpeg',
+            width: 160,
           ),
         ],
       ),
     );
 
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.purple[200],
+      ),
       title: 'recommend workout',
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('오늘의 도서 추천'),
-          ),
-          body: Column(
+        appBar: AppBar(
+          title: Text('책플릭스'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
             children: <Widget>[
-              titleSection,
-              slideBook,
+              FirstRoute(),
+              titleFirst,
+              slideFirst,
+              titleSecond,
+              slideSecond,
+              titleThird,
+              slideThird,
             ],
-          )),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: Container(
+            color: Colors.purple[200],
+            height: 50.0,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Icon(Icons.search),
+                  Icon(Icons.account_box),
+                ]),
+          ),
+        ),
+      ),
     );
   }
 }
